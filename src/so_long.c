@@ -1,4 +1,3 @@
-#include <unistd.h>
-#include <stdio.h>
+#include "so_long.h"
 
 
