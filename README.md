@@ -20,7 +20,8 @@ https://github.com/madebypixel02/so_long
 
 ## How to build it :  
 
-First I create my Project Plan:
+First I create my Project Plan:  
+
 <ins>1. Theme and Graphics</ins>
 *   choice of theme 
 *   image research 
