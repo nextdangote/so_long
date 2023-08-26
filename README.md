@@ -29,13 +29,15 @@ First I create my Project Plan :
 
 <ins>2. Code Structure</ins>
 *   create a Makefile that doesn't relink
-*   create a header file 
+*   create a header file
+
 <ins>3. Parsing</ins>
 *   read the map file with the C-functions ``open`` and ``read`` and store its content in a string
 *   store the map in a 2D-array
 *   check that the map is valid
 *   check that the path is valid (all collectibles and exit reachable) using floodfill
 *   implement error messages
+
 <ins>4. Game Coding</ins>
 *   keyboard input (``W`` ``A`` ``S`` ``D`` + arrow keys for moving and ``ESC`` for closing the game)
 *   image conversion to ``.xpm42`` using ``xpm3_conv.py``-file of the MLX42
