@@ -1,7 +1,8 @@
 # so_long
 A 2D Game in C using the MLX42 Graphics Library
 
-Resources :
+Resources :  
+
 https://github.com/liz753/so_long/blob/main/Makefile
 
 https://github.com/Laendrun/42-so_long/tree/main/includes  
