@@ -26,6 +26,7 @@ First I create my Project Plan :
 *   choice of theme 
 *   image research 
 *   image manipulation using GIMP (transparency and resizing)
+
 <ins>2. Code Structure</ins>
 *   create a Makefile that doesn't relink
 *   create a header file 
