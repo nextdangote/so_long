@@ -1,3 +1,3 @@
-#include "so_long.h"
+#include "../incl/so_long.h"
 
 

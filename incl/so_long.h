@@ -7,9 +7,9 @@
 # include <fcntl.h>
 # include <stdbool.h>
 # include "../libft/libft.h"
-# include "../get_next_line/get_next_line.h"
+//# include "../get_next_line/get_next_line.h"
 # include "../ft_printf/ft_printf.h"
-# include "MLX42/include/MLX42/MLX42.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 
 # define TRUE 1
 # define FALSE 0
@@ -24,19 +24,37 @@
 # define E_EMPTYFILE "HEYYY ?! DA file is empty fam!\n"
 # define E_IMAGE "Issue w the image you want to use familia.\n"
 # define E_MAX "Seems like it is too much, I can not handle that calm down...\n"
-
-typedef struct s_map
-{
-    int     width;
-    int     height;
-    char    **map;
-}               t_map;
+# define E_WALLS "your walls are liabilities, fix that homo sapiens sapiens...\n"
+# define E_INVALIDPATH "there is no way you finish this game fam #invalidpath\n"
 
 typedef struct s_game
 {
-    t_map   map;
+    char    **map;
     void    *mlx;
     void    *win;
+    bool    exit_flag;
+    int     state;
+    int     move_count;
+    int     pixel_x;
+    int     pixel_y;
 }               t_game;
+
+typedef enum e_state
+{
+	STATE_NULL = 0,
+	STATE_SUCCESS = 1,
+	STATE_CLOSING = 2,
+	STATE_GAMEOVER = 3,
+}   t_state;
+
+void	ft_error(char *str);
+void	ft_init_game(t_game *game);
+void	ft_validate_map(char *str_map);
+int		ft_number_of_columns(char **map);
+int     ft_number_of_lines(char **map);
+void	ft_validate_path(t_game *game, char **map);
+int		ft_check_collectibles(char **map);
+void	ft_validate_2dmap(char **map);
+char	*ft_read_map(char *mapfile);
 
 #endif
