@@ -48,11 +48,11 @@ typedef enum e_state
 	STATE_GAMEOVER = 3,
 }   t_state;
 
-// typedef struct s_graphics
-// {
-//     mlx_image_t *sch;
-//     int         test;
-// }               t_graphics;
+typedef struct s_graphics
+{
+    mlx_image_t *sch;
+    int         test;
+}               t_graphics;
 
 void	ft_error(char *str);
 void	ft_init_game(t_game *game);

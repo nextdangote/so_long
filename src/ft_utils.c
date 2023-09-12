@@ -2,7 +2,12 @@
 
 void ft_error(char *str)
 {
-    write(2, "Error ", 6);
+    ssize_t result = write(2, "Error ", 6);
+    if (result == -1) 
+    {
+        printf("Error while writing to stderr\n");
+        exit(1);
+    }
     printf("%s\n", str); // 📛📛📛📛change to ft_printf 
     exit (1);
 }
@@ -49,7 +54,13 @@ char *ft_read_map(char *mapfile)
     if (!str)
         ft_error(E_MALLOC);
     //utiliser read pour store la str envoyée dans la str mallocquée
-    read(fd, str, i);
+    //read(fd, str, i);
+    ssize_t bytesRead = read(fd, str, i);
+    if (bytesRead == -1) 
+    {
+        printf("Error while reading from file\n");
+        exit(1);
+    }
     //null terminer
     str[i] = '\0';
     // 📛📛📛📛 Pas oublier de close le fd 📛📛📛📛
