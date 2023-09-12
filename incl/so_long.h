@@ -30,6 +30,7 @@
 typedef struct s_game
 {
     char    **map;
+    char    *mapfile;
     void    *mlx;
     void    *win;
     bool    exit_flag;
@@ -47,9 +48,17 @@ typedef enum e_state
 	STATE_GAMEOVER = 3,
 }   t_state;
 
+// typedef struct s_graphics
+// {
+//     mlx_image_t *sch;
+//     int         test;
+// }               t_graphics;
+
 void	ft_error(char *str);
 void	ft_init_game(t_game *game);
 void	ft_validate_map(char *str_map);
+int     ft_check_amount_lines(char *str_map);
+int     ft_check_line_length(char *str_map);
 int		ft_number_of_columns(char **map);
 int     ft_number_of_lines(char **map);
 void	ft_validate_path(t_game *game, char **map);

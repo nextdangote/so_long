@@ -36,7 +36,8 @@ void    ft_floodfill(t_game *game, char **map, int *count_collectible, int x, in
     if(map[x][y] == 'C')
     {
         map[x][y] = 'c';
-        count_collectible--;
+        (*count_collectible)--;
+        printf("count_collectible is %d\n", *count_collectible);
     }
     //apres on verifie si la case est un 0 si oui on transforme la case en o.
     if(map[x][y] == '0')
@@ -86,7 +87,7 @@ void ft_validate_path(t_game *game, char **map)
     while (map[x] != NULL)
     {
         y = 0;
-        while(map[x][y] != '\0')
+        while(map[x][y] != '\n' && map[x][y] != '\0')
         {
             if(map[x][y] == 'P')
             {
@@ -100,7 +101,35 @@ void ft_validate_path(t_game *game, char **map)
     //quand il est trouvé on lance le ft_floodfill
     //après le flood_fill checker si le compte de collectibles est 0 si ! ft_error(invalidpath)
     if (collectible_count != 0)
-        ft_error(E_INVALIDPATH);// 📛📛📛📛 et dans ce cas ne dois je pas free ma map et tout ce qui a été malloc ??? 📛📛📛📛
+    {
+        // printf("collectible_count is %d\n", collectible_count);
+        // printf("x is %d\n", x);
+        // printf("y is %d\n", y);
+        // x = 0;
+        // y = 0;
+        // while(map[x])
+        // {
+        //     printf("%s\n", map[x]);
+        //     x++;
+        // }
+        // printf("\n");
+        // ft_restore(map);
+        // x = 0;
+        // y = 0;
+        // while(map[x])
+        // {
+        //     printf("%s\n", map[x]);
+        //     x++;
+        // }
+        ft_error(E_INVALIDPATH);
+    }// 📛📛📛📛 et dans ce cas ne dois je pas free ma map et tout ce qui a été malloc ??? 📛📛📛📛
     //ensuite on a une fonction qui restore la map en mettant les majuscules ( Pas sur car j'envoie pas de pointeur donc la map ne devrait pas ê modifiée)
     ft_restore(map);
+    // x = 0;
+    // y = 0;
+    // while(map[x])
+    // {
+    //     printf("%s\n", map[x]);
+    //     x++;
+    // }
 }

@@ -34,22 +34,22 @@ char *ft_read_map(char *mapfile)
     //si apres l'open le fd a une return value negative, error msg -> invalid file
     if (fd < 0)
         ft_error(E_FILE);
-    //compter le nombre de char dans la map
-    while(*mapfile)
-    {
+    //compter le nombre de char dans la map 🛑🛑🛑🛑🛑 wrong way to do it, I need to use read 🛑🛑🛑🛑🛑
+    while(read(fd, mapfile, 1) > 0)
         i++;
-        mapfile++;
-    }
+    printf("i is %d\n", i);
     //si compte est = 0 emptyfile -> errormsg
     if (i == 0)
         ft_error(E_EMPTYFILE);
+    //on rewind le file jusque au debut
+    lseek(fd, 0, SEEK_SET); // 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 est ce que je peux utiliser cette fonction ?
     //mallocquer une str pour store la str de la map
     str = (char *)malloc(sizeof(char) * (i + 1));
     // 📛 Pas oublier que j'ai malloc la str et qu'il faudra free un moment
     if (!str)
         ft_error(E_MALLOC);
     //utiliser read pour store la str envoyée dans la str mallocquée
-    read(fd, str, O_RDONLY);
+    read(fd, str, i);
     //null terminer
     str[i] = '\0';
     // 📛📛📛📛 Pas oublier de close le fd 📛📛📛📛

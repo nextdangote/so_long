@@ -11,10 +11,11 @@ int main(int argc, char **argv)
 {
     t_game game;
     char *str_map;
-
+    game.mapfile = argv[1];
     if(argc != 2)
         ft_error(E_ARG);
-    str_map = ft_read_map(argv[1]);
+    str_map = ft_read_map(game.mapfile);
+    printf("str_map is\n%s\n", str_map); //to delete
     // 📛 Pas oublier que j'ai malloc la str_map et qu'il faudra free un moment
     //fct pour initialiser le t_game game #if the return value is NULL because the file name does not end with ber what should be done ?
     ft_init_game(&game);

@@ -3,14 +3,16 @@
 int ft_check_char(char *str_map)
 {
     int i;
+    int amount_columns;
 
     i = 0;
+    amount_columns = ft_check_line_length(str_map);
     while(str_map[i])
     {
-        if(str_map[i] == '0' || str_map[i] == 'E' || str_map[i] == 'P' || str_map[i] == '1' || str_map[i] == 'C')
+        if(str_map[i] == '0' || str_map[i] == 'E' || str_map[i] == 'P' || str_map[i] == '1' || str_map[i] == 'C' || (str_map[i] == '\n' && (i % amount_columns == 0)))
             i++;
         else
-            return(0);
+            return(i);
     }
     return(1);
 }
@@ -73,29 +75,36 @@ int ft_check_line_length(char *str_map)
     k = 0;
     while (str_map[i] != '\n')
         i++;
+    i++;
     j = i;
     while (str_map[j])
     {
         k = 0;
-        while (str_map[j] != '\n')
+        while (str_map[j] != '\n' && str_map[j] != '\0')
         {
             j++;
             k++;
         }
-        if (k != i)
+        if (str_map[j] == '\n')
+            j++;
+        if (k != i - 1)
             return (0);
     }
     return (1);
 }
 
-void ft_validate_map(char *str_map)
+void    ft_validate_map(char *str_map)
 {
     if(!(ft_check_char(str_map)))
         ft_error(E_CHAR);
+    //printf("str_map error is %d\n", ft_check_char(str_map));//to delete📛
     if(!(ft_check_char_amount(str_map)))
         ft_error(E_CHAR); //I can create a specific error message for this
     if(!(ft_check_amount_lines(str_map)))
         ft_error(E_MAX);
-    if(!(ft_check_line_length(str_map)))
+    if((ft_check_line_length(str_map)) != 1)
+    {
         ft_error(E_MAPNOTVALID);
+    }
+    printf("test passed ma3lich\n");//to delete📛
 }
