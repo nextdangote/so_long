@@ -27,18 +27,30 @@
 # define E_WALLS "your walls are liabilities, fix that homo sapiens sapiens...\n"
 # define E_INVALIDPATH "there is no way you finish this game fam #invalidpath\n"
 
+typedef struct s_graphics
+{
+    mlx_image_t *exit;
+    mlx_image_t *background;
+    mlx_image_t *character;
+    mlx_image_t *collectible;
+    mlx_image_t *wall;
+}               t_graphics;
+
 typedef struct s_game
 {
     char    **map;
     char    *mapfile;
-    void    *mlx;
     void    *win;
     bool    exit_flag;
     int     state;
     int     move_count;
     int     pixel_x;
     int     pixel_y;
-}               t_game;
+    mlx_t   *mlx;
+    mlx_t   *window;
+    t_graphics  graphics;
+    t_graphics  last_graphics;
+}   t_game;
 
 typedef enum e_state
 {
@@ -47,12 +59,6 @@ typedef enum e_state
 	STATE_CLOSING = 2,
 	STATE_GAMEOVER = 3,
 }   t_state;
-
-typedef struct s_graphics
-{
-    mlx_image_t *sch;
-    int         test;
-}               t_graphics;
 
 void	ft_error(char *str);
 void	ft_init_game(t_game *game);
@@ -65,5 +71,8 @@ void	ft_validate_path(t_game *game, char **map);
 int		ft_check_collectibles(char **map);
 void	ft_validate_2dmap(char **map);
 char	*ft_read_map(char *mapfile);
+void	ft_load_graphics(t_game *game);
+void	ft_clean_old_graphics(t_game *game);
+void    ft_update_image(t_game *game);
 
 #endif

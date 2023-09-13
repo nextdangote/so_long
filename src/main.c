@@ -1,5 +1,13 @@
 #include "../incl/so_long.h"
 
+void	hook(void *param)
+{
+	t_game	*game;
+
+	game = param;
+	ft_update_image(game);
+}
+
 void ft_init_game(t_game *game)
 {
     game->exit_flag = FALSE;
@@ -28,6 +36,17 @@ int main(int argc, char **argv)
     //creer un gros file pour valider le path, floodfill sera necessaire
     ft_validate_path(&game, game.map);
     printf("map and path are okay\n"); //to delete
-    game.pixel_x = ft_number_of_columns(game.map);
-    game.pixel_y = ft_number_of_lines(game.map);
+    game.pixel_x = ft_number_of_columns(game.map) * 64;
+    game.pixel_y = ft_number_of_lines(game.map) * 64;
+    game.mlx = mlx_init(game.pixel_x, game.pixel_y, "MLX42", FALSE);
+    if(!game.mlx)
+        exit(EXIT_FAILURE);
+    //j'ouvre et load les images
+    ft_load_graphics(&game);
+    //mlx_loop_hook je sais pas vraiment ça fait quoi
+    mlx_loop_hook(game.mlx, &hook, &game);
+    //fonction pour gerer les evenements en fonction des touches
+    //une fonction loop je ne sais pas pourquoi ❓❓❓❓❓❓❓❓
+    //une fonction qui free la map2d
+    //une fonction qui terminate 
 }
