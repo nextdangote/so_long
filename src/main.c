@@ -46,7 +46,9 @@ int main(int argc, char **argv)
     //mlx_loop_hook je sais pas vraiment ça fait quoi
     mlx_loop_hook(game.mlx, &hook, &game);
     //fonction pour gerer les evenements en fonction des touches
-    //une fonction loop je ne sais pas pourquoi ❓❓❓❓❓❓❓❓
-    //une fonction qui free la map2d
-    //une fonction qui terminate 
+    //mlx_key_hook(game.mlx, &ft_key_hook, NULL);
+    mlx_loop(game.mlx);//une fonction loop je ne sais pas pourquoi ❓❓❓❓❓❓❓❓
+    //ft_free_map(game.map);//une fonction qui free la map2d
+    mlx_terminate(game.mlx);//une fonction qui terminate
+    return(EXIT_SUCCESS);
 }

@@ -44,6 +44,7 @@ typedef struct s_game
     bool    exit_flag;
     int     state;
     int     move_count;
+    int     collectibles_count;
     int     pixel_x;
     int     pixel_y;
     mlx_t   *mlx;
@@ -74,5 +75,13 @@ char	*ft_read_map(char *mapfile);
 void	ft_load_graphics(t_game *game);
 void	ft_clean_old_graphics(t_game *game);
 void    ft_update_image(t_game *game);
+void    ft_key_hook(void *param);
+void    ft_move_up(t_game   *game);
+void    ft_move_down(t_game   *game);
+void    ft_move_right(t_game   *game);
+void    ft_move_left(t_game   *game);
+void    ft_you_win(t_game *game);
+void    ft_message_win(t_game *game);
+int     ft_check_collec_and_exit(t_game *game);
 
 #endif

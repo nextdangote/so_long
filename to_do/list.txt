@@ -1,0 +1,7 @@
+- faire le key hook pour dire ce que les touches font
+- faire des fonctions pour chacuns des moves
+
+- modifier les images pour qu'elles aient le bon FORMAT
+- modifier le makefile pour que je puisse compiler
+- faire norminette
+- verifier si je peux utiliser lseek ou pas
