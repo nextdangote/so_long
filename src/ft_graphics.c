@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_graphics.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aguede <aguede@student.42berlin.de>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/23 02:21:41 by aguede            #+#    #+#             */
+/*   Updated: 2023/09/23 02:34:30 by aguede           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../incl/so_long.h"
 
 bool	open_image(char *str)
@@ -10,8 +22,8 @@ bool	open_image(char *str)
 	close(fd);
 	return (TRUE);
 }
-// 🛑🛑🛑🛑🛑🛑🛑comprendre cette fonction
-mlx_image_t	*ft_graphics_to_image(mlx_t *mlx, char *img_path)
+
+mlx_image_t	*ft_graph_img(mlx_t *mlx, char *img_path)
 {
 	xpm_t			*xpm;
 	mlx_image_t		*img;
@@ -21,30 +33,31 @@ mlx_image_t	*ft_graphics_to_image(mlx_t *mlx, char *img_path)
 		ft_error(E_IMAGE);
 	xpm = mlx_load_xpm42(img_path);
 	if (!xpm)
-		printf("\nxpm is null\n");//change to ft_printf
+		printf("\nxpm is null\n");
 	texture = xpm->texture;
 	img = mlx_texture_to_image(mlx, &texture);
 	if (!img)
-		printf("\nimg is null\n");//change to ft_printf
+		printf("\nimg is null\n");
 	mlx_delete_xpm42(xpm);
 	return (img);
 }
 
 void	ft_load_graphics(t_game *game)
 {
-	game->graphics.background = ft_graphics_to_image(game->mlx, "./graphics/background.xpm");
-    game->graphics.wall = ft_graphics_to_image(game->mlx, "./graphics/wall.xpm");
-    game->graphics.collectible = ft_graphics_to_image(game->mlx, "./graphics/collectible.xpm");
-    game->graphics.exit = ft_graphics_to_image(game->mlx, "./graphics/exit.xpm");
-    game->graphics.character = ft_graphics_to_image(game->mlx, "./graphics/character.xpm");
+	game->graphics.backgrd = ft_graph_img(game->mlx, "./graphics/Water.xpm42");
+	game->graphics.wall = ft_graph_img(game->mlx, "./graphics/Wall.xpm42");
+	game->graphics.collec = ft_graph_img(game->mlx, "./graphics/collec.xpm42");
+	game->graphics.exit = ft_graph_img(game->mlx, "./graphics/Exit.xpm42");
+	game->graphics.charac = ft_graph_img(game->mlx, "./graphics/charac.xpm42");
+	if (game->collectibles_count == 0)
+		game->graphics.exit = ft_graph_img(game->mlx, "./graphics/exitn.xpm42");
 }
 
 void	ft_clean_old_graphics(t_game *game)
 {
-	mlx_delete_image(game->mlx, game->last_graphics.background);
+	mlx_delete_image(game->mlx, game->last_graphics.backgrd);
 	mlx_delete_image(game->mlx, game->last_graphics.wall);
-	mlx_delete_image(game->mlx, game->last_graphics.collectible);
+	mlx_delete_image(game->mlx, game->last_graphics.collec);
 	mlx_delete_image(game->mlx, game->last_graphics.exit);
-	mlx_delete_image(game->mlx, game->last_graphics.character);
+	mlx_delete_image(game->mlx, game->last_graphics.charac);
 }
-

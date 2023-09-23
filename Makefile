@@ -1,57 +1,44 @@
-# NAME        := so_long
-# CFLAGS      := -Wextra -Wall -Werror -Wunreachable-code -Ofast
-# LIBMLX      := ./MLX42
-# LIBFT       := ./libft
-# HEADERS     := -I ./include -I $(LIBMLX)/include/MLX42 -I $(LIBFT)/include
-# LIBS        := $(LIBFT)/libft.a
-# SRCS        := $(shell find ./src -iname "*.c")
-# OBJS        := ${SRCS:.c=.o}
-# all: lib $(NAME)
-# lib:
-# 		@$(MAKE) -C $(LIBFT)
-# 		 @if [ ! -d "$(LIBMLX)" ]; then \
-# 				git clone https://github.com/codam-coding-college/MLX42.git $(LIBMLX); \
-# 		fi
-# 		@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
-# %.o: %.c
-# 		@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<) "
-# $(NAME): $(OBJS)
-# 		@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
-# clean:
-# 		@rm -f $(OBJS)
-# 		@$(MAKE) clean -C $(LIBFT)
-# fclean: clean        
-# 		@rm -fr $(LIBMLX)
-# 		@rm -f $(NAME)
-# 		@$(MAKE) fclean -C $(LIBFT)
-# re: clean all
-# .PHONY: all, clean, fclean, re, lib
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aguede <aguede@student.42berlin.de>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/09/23 02:21:26 by aguede            #+#    #+#              #
+#    Updated: 2023/09/23 18:05:00 by aguede           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-NAME        := so_long
-CFLAGS      := -Wextra -Wall -Werror -Wunreachable-code -Ofast
-LIBMLX      := ./MLX42
-LIBFT       := ./libft
-HEADERS     := -I ./include -I $(LIBMLX)/include/MLX42 -I $(LIBFT)/include
-LIBS		:= $(LIBMLX)/build/libmlx42.a -ldl -pthread -lm -lglfw -framework OpenGL $(LIBFT)/libft.a
-SRCS        := $(shell find ./src -iname "*.c")
-OBJS        := ${SRCS:.c=.o}
-all: lib $(NAME)
-lib:
-		@$(MAKE) -C $(LIBFT)
-		@if [ ! -d "$(LIBMLX)" ]; then \
-				git clone https://github.com/codam-coding-college/MLX42.git $(LIBMLX); \
-		fi
-		@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
-%.o: %.c
-		@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
-$(NAME): $(OBJS)
-		@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
-clean:
-		@rm -f $(OBJS)
-		@$(MAKE) clean -C $(LIBFT)
-fclean: clean        
-		@rm -fr $(LIBMLX)
-		@rm -f $(NAME)
-		@$(MAKE) fclean -C $(LIBFT)
-re: clean all
-.PHONY: all, clean, fclean, re, lib
+NAME = so_long
+
+CC		= clang
+
+CFLAGS	= -g -o -Wall -Werror -Wextra 
+
+LIB		= ./MLX42/build/libmlx42.a
+
+RM		= rm -f 
+
+MAKE_MLX = cd ./MLX42/ && make
+
+SRC = ./src/main.c ./src/ft_graphics.c ./src/ft_key_hook.c ./src/ft_move.c ./src/ft_move_up.c ./src/ft_move_down.c ./src/ft_move_right.c ./src/ft_move_left.c ./src/ft_update_image.c ./src/ft_utils.c \
+		./src/ft_validate_2dmap.c ./src/ft_validate_map.c ./src/ft_validate_path.c \
+		./libft/ft_split.c ./libft/ft_strlen.c \
+
+OBJS = ${SRC:%.c=%.o}
+
+all		: $(NAME)
+
+$(NAME)	: $(OBJS)
+	$(MAKE_MLX)
+	$(CC) $(OBJS) $(LIB) $(CFLAGS) -o $(NAME) -I/opt/homebrew/Cellar/glfw/3.3.8/include -L/opt/homebrew/Cellar/glfw/3.3.8/lib -lglfw -I ./MLX42/include
+
+
+clean	: 
+	$(RM) $(OBJS)
+
+fclean	: clean
+	$(RM) $(NAME)
+
+re		: fclean all

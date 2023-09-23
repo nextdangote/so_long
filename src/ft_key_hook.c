@@ -1,18 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_key_hook.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aguede <aguede@student.42berlin.de>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/23 02:21:12 by aguede            #+#    #+#             */
+/*   Updated: 2023/09/23 02:24:23 by aguede           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../incl/so_long.h"
 
-// void    ft_key_hook(mlx_key_data_t keydata, void* param)
-// {
-//     t_game *game;
+void	ft_key_hook(mlx_key_data_t keydata, void *param)
+{
+	t_game	*game;
 
-//     game = param;
-//     if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-// 		mlx_close_window(game);
-// 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
-// 		ft_move_up(game);
-//     if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
-// 		ft_move_down(game);
-//     if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
-// 		ft_move_right(game);
-// 	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
-// 		ft_move_left(game);
-// }
+	game = param;
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		mlx_close_window(game->mlx);
+	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
+		ft_move_up(game);
+	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
+		ft_move_down(game);
+	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
+		ft_move_right(game);
+	if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
+		ft_move_left(game);
+	if ((keydata.key != MLX_KEY_LEFT && keydata.key != MLX_KEY_RIGHT
+			&& keydata.key != MLX_KEY_UP && keydata.key != MLX_KEY_DOWN
+			&& keydata.key != MLX_KEY_ESCAPE) && keydata.action == MLX_PRESS)
+		printf("DUMBASS USE THE ARROWS TO MOVE OR ESC TO QUIT THE GAME\n");
+}

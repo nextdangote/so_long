@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguede <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: amadouguede <amadouguede@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:16:37 by aguede            #+#    #+#             */
-/*   Updated: 2023/02/06 13:16:46 by aguede           ###   ########.fr       */
+/*   Updated: 2023/09/14 20:18:45 by amadouguede      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+
 
 int	ft_putpercent(void)
 {
