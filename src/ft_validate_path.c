@@ -6,7 +6,7 @@
 /*   By: aguede <aguede@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 03:18:15 by aguede            #+#    #+#             */
-/*   Updated: 2023/09/23 03:25:36 by aguede           ###   ########.fr       */
+/*   Updated: 2023/09/23 19:56:29 by aguede           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	ft_validate_path(t_game *game)
 		}
 		x++;
 	}
-	if (collectible_count != 0)
+	if (collectible_count != 0 || game->exit_flag == FALSE)
 		ft_error(E_INVALIDPATH);
 	ft_restore(game->map);
 	game->collectibles_count = ft_check_collectibles(game->map);

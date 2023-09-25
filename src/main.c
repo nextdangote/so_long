@@ -6,7 +6,7 @@
 /*   By: aguede <aguede@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 02:14:45 by aguede            #+#    #+#             */
-/*   Updated: 2023/09/23 03:21:43 by aguede           ###   ########.fr       */
+/*   Updated: 2023/09/23 20:36:59 by aguede           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 	ft_validate_path(&game);
 	game.pixel_x = ft_number_of_columns(game.map) * 64;
 	game.pixel_y = ft_number_of_lines(game.map) * 64;
-	game.mlx = mlx_init(game.pixel_x, game.pixel_y, "GO SWIM LAZY A**", FALSE);
+	game.mlx = mlx_init(game.pixel_x, game.pixel_y, "GO SWIM LAZY A**", TRUE);
 	if (!game.mlx)
 		exit(EXIT_FAILURE);
 	ft_load_graphics(&game);

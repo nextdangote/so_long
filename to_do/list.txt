@@ -1,11 +1,3 @@
 
-demain :
-- rajouter mon ft_printf (ft_utils)
-- checker mon path checker car la map12 n'est pas détectée comme invalidpath
-- optimiser le rendu du jeu
-
-- modifier makefile
-- checker les leaks avec valgrind
-- etudier un peu la structure pour être sur de bien comprendre ce qui se passe à chaque étape
 
 

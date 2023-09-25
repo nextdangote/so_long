@@ -6,7 +6,7 @@
 /*   By: aguede <aguede@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 03:11:29 by aguede            #+#    #+#             */
-/*   Updated: 2023/09/23 03:13:08 by aguede           ###   ########.fr       */
+/*   Updated: 2023/09/23 20:10:23 by aguede           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,7 @@ void	ft_validate_2dmap(char **map)
 	int	number_of_columns;
 
 	number_of_lines = ft_number_of_lines(map);
-	printf("number of lines is %d\n", number_of_lines);
 	number_of_columns = ft_number_of_columns(map);
-	printf("number of columns is %d\n", number_of_columns);
 	if (!ft_wall_check(map, number_of_columns, number_of_lines))
 	{
 		free(map);

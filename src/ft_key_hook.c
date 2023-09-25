@@ -6,7 +6,7 @@
 /*   By: aguede <aguede@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 02:21:12 by aguede            #+#    #+#             */
-/*   Updated: 2023/09/23 02:24:23 by aguede           ###   ########.fr       */
+/*   Updated: 2023/09/23 18:57:00 by aguede           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ void	ft_key_hook(mlx_key_data_t keydata, void *param)
 	if ((keydata.key != MLX_KEY_LEFT && keydata.key != MLX_KEY_RIGHT
 			&& keydata.key != MLX_KEY_UP && keydata.key != MLX_KEY_DOWN
 			&& keydata.key != MLX_KEY_ESCAPE) && keydata.action == MLX_PRESS)
-		printf("DUMBASS USE THE ARROWS TO MOVE OR ESC TO QUIT THE GAME\n");
+		ft_printf("DUMBASS USE THE ARROWS TO MOVE OR ESC TO QUIT THE GAME\n");
 }

@@ -6,7 +6,7 @@
 /*   By: aguede <aguede@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 02:13:38 by aguede            #+#    #+#             */
-/*   Updated: 2023/09/23 02:13:39 by aguede           ###   ########.fr       */
+/*   Updated: 2023/09/23 18:58:09 by aguede           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	ft_error(char *str)
 	result = write(2, "Error ", 6);
 	if (result == -1)
 	{
-		printf("Error while writing to stderr\n");
+		ft_printf("Error while writing to stderr\n");
 		exit (1);
 	}
-	printf("%s\n", str);
+	ft_printf("%s\n", str);
 	exit (1);
 }
 

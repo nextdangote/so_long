@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amadouguede <amadouguede@student.42.fr>    +#+  +:+       +#+        */
+/*   By: aguede <aguede@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:16:37 by aguede            #+#    #+#             */
-/*   Updated: 2023/09/14 20:18:45 by amadouguede      ###   ########.fr       */
+/*   Updated: 2023/09/23 18:51:45 by aguede           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 
 int	ft_putpercent(void)
 {
@@ -67,15 +68,15 @@ int	ft_printf(const char *stringficelle, ...)
 	return (compteur);
 }
 
-int	main(void)
-{
-	char c;
-	int mine;
-	int std;
+// int	main(void)
+// {
+// 	char c;
+// 	int mine;
+// 	int std;
 
-	c = 'a';
-	mine = ft_printf(" amadou %d %c %s %u %x %X %p %% \n", -2147483648, 'b', "chacal", 14565855, 16, 16, &c);
-	ft_printf("%d\n", mine);
-	std = printf(" amadou %d %c %s %u %x %X %p %% \n", -2147483647, 'b', "chacal", 14565855, 16, 16, &c);
-	printf("%d\n", std);
-}
+// 	c = 'a';
+// 	mine = ft_printf(" amadou %d %c %s %u %x %X %p %% \n", -2147483648, 'b', "chacal", 14565855, 16, 16, &c);
+// 	ft_printf("%d\n", mine);
+// 	std = printf(" amadou %d %c %s %u %x %X %p %% \n", -2147483647, 'b', "chacal", 14565855, 16, 16, &c);
+// 	printf("%d\n", std);
+// }

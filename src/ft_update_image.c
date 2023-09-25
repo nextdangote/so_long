@@ -6,7 +6,7 @@
 /*   By: aguede <aguede@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 02:21:38 by aguede            #+#    #+#             */
-/*   Updated: 2023/09/23 03:08:32 by aguede           ###   ########.fr       */
+/*   Updated: 2023/09/23 22:51:25 by aguede           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_message_win(t_game *game)
 {
 	if (game->state == STATE_SUCCESS)
 	{
-		printf("CONGRATS LIL SASSY BEING YOU WON !\n");
-		printf("You won in %d moves!\n", game->move_count);
+		ft_printf("CONGRATS LIL SASSY BEING YOU WON !\n");
+		ft_printf("You won in %d moves!\n", game->move_count);
 		mlx_close_window(game->mlx);
 	}
 }
@@ -57,7 +57,7 @@ void	ft_update_image(t_game *game)
 	if (game->state == STATE_NULL)
 	{
 		ft_clean_old_graphics(game);
-		game->graphics = game->last_graphics;
+		game->last_graphics = game->graphics;
 		ft_load_graphics(game);
 		while (y < (game->pixel_y / 64))
 		{

@@ -6,7 +6,7 @@
 /*   By: aguede <aguede@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:17:05 by aguede            #+#    #+#             */
-/*   Updated: 2023/09/23 18:17:06 by aguede           ###   ########.fr       */
+/*   Updated: 2023/09/23 18:57:08 by aguede           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_perform_down_move(t_game *game, int y, int x)
 	game->map[y + 1][x] = 'P';
 	game->map[y][x] = '0';
 	game->move_count++;
-	printf("Move numba %d\n", game->move_count);
+	ft_printf("Move numba %d\n", game->move_count);
 }
 
 int	ft_check_down_move(t_game *game, int y, int x)

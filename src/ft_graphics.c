@@ -6,7 +6,7 @@
 /*   By: aguede <aguede@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 02:21:41 by aguede            #+#    #+#             */
-/*   Updated: 2023/09/23 02:34:30 by aguede           ###   ########.fr       */
+/*   Updated: 2023/09/23 18:56:49 by aguede           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ mlx_image_t	*ft_graph_img(mlx_t *mlx, char *img_path)
 		ft_error(E_IMAGE);
 	xpm = mlx_load_xpm42(img_path);
 	if (!xpm)
-		printf("\nxpm is null\n");
+		ft_printf("\nxpm is null\n");
 	texture = xpm->texture;
 	img = mlx_texture_to_image(mlx, &texture);
 	if (!img)
-		printf("\nimg is null\n");
+		ft_printf("\nimg is null\n");
 	mlx_delete_xpm42(xpm);
 	return (img);
 }
